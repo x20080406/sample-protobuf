@@ -1,6 +1,8 @@
 package personal.tianjie.protobuf;
 
 import static java.lang.Boolean.TRUE;
+import static personal.tianjie.util.DateUtil.MAX_VALUE;
+import static personal.tianjie.util.DateUtil.MIN_VALUE;
 
 import java.io.IOException;
 import java.lang.reflect.AccessibleObject;
@@ -344,10 +346,10 @@ public class ProtoEntity extends GeneratedMessage {
 				Long millisecond = Long.valueOf((((Long) method.invoke(
 						innerObj, new Object[0])).longValue() + timeZone
 						.getRawOffset()) * 10000L);
-				if (millisecond.longValue() >= 2534022719990000000L)
-					millisecond = Long.valueOf(2534023007999999999L);
-				else if (millisecond.longValue() < -621355968000000000L)
-					millisecond = Long.valueOf(-621355968000000000L);
+				if (millisecond.longValue() >= MAX_VALUE.getTime())
+					millisecond = Long.valueOf(MAX_VALUE.getTime());
+				else if (millisecond.longValue() < MIN_VALUE.getTime())
+					millisecond = Long.valueOf(MIN_VALUE.getTime());
 				output.writeFixed64(fieldNumber, millisecond.longValue());
 				break;
 			case 24:
@@ -696,10 +698,10 @@ public class ProtoEntity extends GeneratedMessage {
 				break;
 			case 14:
 				long l = input.readFixed64();
-				if (l > 2534022719990000000L) {
-					l = 253402271999000L;
-				} else if (l == -621355968000000000L) {
-					l = -621357696000000000L;
+				if (l > MAX_VALUE.getTime()) {
+					l = MAX_VALUE.getTime();
+				} else if (l == MIN_VALUE.getTime()) {
+					l = MIN_VALUE.getTime();
 					l = l / 10000L - ProtoEntity.timeZone.getRawOffset();
 				} else {
 					l = l / 10000L - ProtoEntity.timeZone.getRawOffset();
@@ -843,10 +845,10 @@ public class ProtoEntity extends GeneratedMessage {
 				break;
 			case 41:
 				long l1 = input.readFixed64();
-				if (l1 > 2534022719990000000L) {
-					l1 = 253402271999000L;
-				} else if (l1 == -621355968000000000L) {
-					l1 = -621357696000000000L;
+				if (l1 > MAX_VALUE.getTime()) {
+					l1 = MAX_VALUE.getTime();
+				} else if (l1 == MIN_VALUE.getTime()) {
+					l1 = MIN_VALUE.getTime();
 					l1 = l1 / 10000L - ProtoEntity.timeZone.getRawOffset();
 				} else {
 					l1 = l1 / 10000L - ProtoEntity.timeZone.getRawOffset();
